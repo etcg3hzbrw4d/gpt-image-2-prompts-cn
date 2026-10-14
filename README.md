@@ -12,98 +12,92 @@
 
 > **from $0.0085 per image** (1K $0.0085 · 2K $0.014 · 4K $0.021) — one OpenAI-compatible endpoint at `https://api.apimart.ai/v1`, no monthly plan required. *(observed 2026-10-12)*
 
-**[Get an API key](https://go.apimart.ai/k-2d215c)** · **[Live pricing](https://go.apimart.ai/k-045172)** · **[Model page](https://go.apimart.ai/k-cc24a8)** · [⚡ 60-second quickstart](#quickstart)
+**[Get an API key](https://go.apimart.ai/k-2d215c)** · **[Live pricing](https://go.apimart.ai/k-045172)** · **[Model page](https://go.apimart.ai/k-cc24a8)** · [⚡ 60-second quickstart](#run-a-recipe-yourself)
 
 **Why teams call GPT Image 2 (`gpt-image-2`) through APIMart**
 
 - **One key, entire catalog.** The same `https://api.apimart.ai/v1` base URL and `Authorization` header reach GPT Image 2 (`gpt-image-2`) and 300+ other image, video and language models — switch the `model` field, not your client.
-- **$1 minimum, pay as you go.** No subscription and no prepaid plan to size up front: top up from $1 and spend it on calls.
-- **The charge comes back in the response.** Every completed task reports the amount billed (`cost` / `credits_cost`); a task marked `failed` is refunded.
+- **$1 minimum, pay as you go.** No subscription and no prepaid plan to size up front: top up from $1 and spend it on calls. There is no free quota to burn through first, so the price in this table is the price you pay.
+- **The charge comes back in the response.** Every call reports the amount billed (`cost` / `credits_cost`), so a spend number is read per call instead of guessed at month end.
 - **Async by design.** Submit, take the `task_id`, poll `GET /v1/tasks/{id}` — batching and retries are ordinary queue work, not a bespoke integration.
 
 <!-- /conv-kit:v1 -->
 
-GPT Image 2 is OpenAI's image model on APIMart, priced per delivered image by resolution.
+Eight **GPT Image 2 prompts** listed with an example render, the ratio, and what the call costs on this route. Copy a recipe, keep the structure, swap the subject.
 
-## Model id and routes
+- Model: `gpt-image-2`
+- Recipes: **8** (machine-readable in [`data/prompts.json`](data/prompts.json), table in [`PROMPTS.md`](PROMPTS.md))
+- Effective price used below: **$0.0085 per image** — estimated cost of the whole set: **$0.068**
 
-| Route | `model` value | Billing | Notes |
-| --- | --- | --- | --- |
-| Per-image | `gpt-image-2` | per delivered image, by resolution | see the [model page](https://go.apimart.ai/k-cc24a8) for the exact tiers |
+## What separates a usable recipe from a wasted call
 
-Endpoint: `POST https://api.apimart.ai/v1/images/generations` (OpenAI-compatible), then poll `GET /v1/tasks/{task_id}`.
+Three rules held up across every render in this set:
 
-## Pricing
+1. **Name the material, not the adjective.** "Frosted glass", "matte ceramic", "layered paper" steer rendering far more
+   than "beautiful" or "high quality".
+2. **Set the light explicitly.** "Single softbox from the left", "golden hour backlight", "focus-stacked studio light"
+   remove the guesswork the model would otherwise do for you.
+3. **Pin the framing.** Ratio plus lens language (`85mm`, `24mm`, `macro`, overhead flat lay) decides whether the output
+   drops into a layout unchanged.
 
-<!-- pricing:model:start -->
-| Output | List price | Effective price |
+## Prompt structure cheat-sheet
+
+| Slot | What to write | Example |
 | --- | --- | --- |
-| default | 0.010625 | 0.0085 |
-| 1K | 0.2109 | 0.0085 |
-| 2K | 0.4283 | 0.014 |
-| 4K | 0.7117 | 0.021 |
+| Subject | one concrete object or person, with material | *frosted glass perfume bottle* |
+| Light | direction + quality | *single softbox from the left* |
+| Framing | ratio + lens or distance | *3:4, medium format look* |
+| Setting | surface, backdrop, environment | *wet black stone slab* |
+| Finish | render or film character | *commercial product photography* |
 
+## The gallery
 
-<!-- pricing:model:end -->
+Each row is one recipe: example render, category, ratio, cost on this route and the exact prompt.
 
-Prices are a snapshot; the [pricing page](https://go.apimart.ai/k-045172) and [`data/model.json`](data/model.json) are refreshed by CI, and a completed task reports the exact amount in its `cost` field.
+| Output | Recipe | Ratio | Cost | Prompt |
+| --- | --- | --- | --- | --- |
+| <img src="assets/01-product-hero-perfume.jpg" width="220" alt="Sample render via the APIMart image API"> | Product / e-commerce | 1:1 | $0.0085 | `Studio hero shot of a frosted glass perfume bottle on a wet black stone slab, single softbox from the left, faint mist, deep charcoal background, crisp label text, commercial product photography` |
+| <img src="assets/02-food-overhead-ramen.jpg" width="220" alt="Sample render via the APIMart image API"> | Food photography | 4:3 | $0.0085 | `Overhead flat lay of a spicy miso ramen bowl with soft boiled egg, nori and scallions, dark ceramic table, chopsticks resting on the rim, natural window light, editorial food photography` |
+| <img src="assets/03-cinematic-street-rain.jpg" width="220" alt="Sample render via the APIMart image API"> | Cinematic still | 16:9 | $0.0085 | `Rain soaked Kyoto alley at night, paper lantern reflections on wet stone, a lone figure with a transparent umbrella walking away, cinematic 35mm still, shallow depth of field, film grain` |
+| <img src="assets/04-architectural-dusk.jpg" width="220" alt="Sample render via the APIMart image API"> | Architecture | 16:9 | $0.0085 | `Minimalist concrete villa on a cliff at dusk, warm interior light, infinity pool reflecting a violet sky, architectural photography, 24mm perspective, ultra sharp` |
+| <img src="assets/05-fashion-editorial-studio.jpg" width="220" alt="Sample render via the APIMart image API"> | Fashion portrait | 3:4 | $0.0085 | `Editorial fashion portrait of a model in an oversized ivory wool coat, seamless light grey studio backdrop, crisp high key lighting, medium format detail, calm expression` |
+| <img src="assets/06-illustration-layered-paper.jpg" width="220" alt="Sample render via the APIMart image API"> | Illustration | 1:1 | $0.0085 | `Layered paper cut illustration of a mountain lake at sunrise, five depth layers, soft pastel palette, subtle drop shadows, art print composition, clean vector edges` |
+| <img src="assets/07-infographic-dashboard.jpg" width="220" alt="Sample render via the APIMart image API"> | Design / UI | 16:9 | $0.0085 | `Flat vector dashboard panel showing three gauge dials and abstract latency curves, muted blue and sand palette, generous white space, crisp geometric cards, no placeholder text` |
+| <img src="assets/08-macro-botanical-detail.jpg" width="220" alt="Sample render via the APIMart image API"> | Macro nature | 3:2 | $0.0085 | `Macro photograph of a dew covered dandelion seed head against deep black background, focus stacked detail, iridescent droplets, studio lighting` |
 
-## Request parameters
+## Run a recipe yourself
 
-| Field | Type | Default | Notes |
-| --- | --- | --- | --- |
-| `model` | string | required | the model id shown in the route table above |
-| `prompt` | string | required | what to generate, or what to change when editing |
-| `size` | string | `auto` / `1:1` | aspect ratio, or `auto` where the route supports it |
-| `resolution` | string | `1K` | output resolution tier — cost scales with it |
-| `n` | integer | `1` | number of images per task, where the route allows more than one |
-| `image_urls` | string[] | — | reference images as public HTTP(S) URLs or base64 data URLs |
-| `nsfw_check` | boolean | `false` | runs `omni-moderation-latest` before submitting |
-
-The table lists the fields accepted by the APIMart OpenAI-compatible image endpoint. Check the [model page](https://go.apimart.ai/k-cc24a8) for anything this model adds on top.
-
-## Quickstart
+```bash
+export APIMART_API_KEY=...
+python examples/run_recipes.py --dry-run                 # list the recipes, no network
+python examples/run_recipes.py --limit 2                 # generate two of them
+```
 
 ```bash
 curl --request POST --url https://api.apimart.ai/v1/images/generations \
   --header "Authorization: Bearer $APIMART_API_KEY" --header 'Content-Type: application/json' \
-  -d '{"model":"gpt-image-2","prompt":"A bamboo forest at sunrise, slow push-in","size":"1:1","resolution":"1K"}'
+  -d '{"model":"gpt-image-2","prompt":"<paste a prompt>","size":"1:1","resolution":"1K"}'
 ```
 
-```python
-import os, time, requests
-
-BASE = "https://api.apimart.ai/v1"
-HEADERS = {"Authorization": f"Bearer {os.environ['APIMART_API_KEY']}", "Content-Type": "application/json"}
-
-created = requests.post(f"{BASE}/images/generations", headers=HEADERS, timeout=60, json={
-    "model": "gpt-image-2", "prompt": "A bamboo forest at sunrise, slow push-in",
-}).json()
-task_id = created["data"]["id"]
-
-while True:
-    task = requests.get(f"{BASE}/tasks/{task_id}", headers=HEADERS, timeout=60).json()["data"]
-    if task["status"] in ("completed", "failed"):
-        break
-    time.sleep(5)
-print(task.get("cost"), task["result"]["images"][0]["url"])
-```
-
-Runnable versions: [`examples/`](examples). The task lifecycle is `pending → processing → completed | failed`.
+Result links expire 72 hours after completion, so store the outputs; the completed task carries `cost` for reconciliation.
 
 ## FAQ
 
-**What is the GPT Image 2 model id?**
+**Are these prompts free to reuse?**
 
-`gpt-image-2`. See the route table above.
+Yes — the prompt text in this repository is MIT licensed. The generated images and any third-party marks they contain remain your responsibility, and you should check the model vendor's terms before publishing commercial work.
 
-**How is it billed?**
+**Why do the recipes use different aspect ratios?**
 
-**from $0.0085 per image** (1K $0.0085 · 2K $0.014 · 4K $0.021). The completed task reports the exact amount in its `cost` field; a failed task is refunded.
+Because ratio is a layout decision, not a style one: 1:1 for catalogue and icons, 16:9 for hero and video thumbnails, 3:4 or 2:3 for portraits and print. Pinning it up front avoids cropping later.
 
-**How do I get a key?**
+**How much does one recipe cost to run?**
 
-Use the [Get an API key](https://go.apimart.ai/k-2d215c) link — $1 minimum top-up, no plan required.
+**from $0.0085 per image** (1K $0.0085 · 2K $0.014 · 4K $0.021). Every completed task reports the exact amount in its `cost` field; a failed task is refunded.
+
+**Can I use a recipe as a template for another subject?**
+
+That is the point. Keep the structure (subject + light + framing + setting + finish) and replace the subject; changing everything at once makes it impossible to tell which phrase moved the output.
 
 ## Attributed links (how this repository is measured)
 
@@ -118,9 +112,19 @@ Outbound APIMart links are minted through the promo link API; hand-made tracking
 
 ## Disclosure
 
-GPT Image 2 is a third-party model served through APIMart; this repository documents how to call it and publishes
-model ids and prices, and does not claim official status. Model names, prices and documentation belong to their
-respective owners.
+GPT Image 2 is a third-party model served through APIMart. This repository publishes prompts, example renders and
+cost logic; it does not claim official status for any vendor, and model names and documentation belong to their owners.
+
+## Repository map
+
+```text
+README.md              gallery, prompt structure and FAQ
+PROMPTS.md             every recipe in one table
+data/prompts.json      machine-readable recipes with per-unit cost
+examples/run_recipes.py  batch runner (dry-run safe for CI)
+tools/check_links.py   attribution guard
+assets/                example renders via the APIMart image API (JPEG)
+```
 
 ## License
 

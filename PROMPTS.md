@@ -1,14 +1,14 @@
-# Nano Banana Pro prompt recipes
+# GPT Image 2 prompt recipes
 
-Every recipe below was run through `gemini-3-pro-image-preview` and published with the output it produced. Cost is the value the completed task reported.
+Every recipe below is written for `gpt-image-2` and published with an example render. Cost is the effective unit price on this route.
 
 | Recipe | Category | Ratio | Cost | Prompt |
 | --- | --- | --- | --- | --- |
-| Product / e-commerce | Product / e-commerce | 1:1 | $0.03 | `Studio hero shot of a frosted glass perfume bottle on a wet black stone slab, single softbox from the left, faint mist, deep charcoal background, crisp label text, commercial product photography` |
-| Cinematic still | Cinematic still | 16:9 | $0.03 | `Rain soaked Kyoto alley at night, paper lantern reflections on wet stone, a lone figure with a transparent umbrella walking away, cinematic 35mm still, shallow depth of field, film grain` |
-| Food photography | Food photography | 4:3 | $0.03 | `Overhead flat lay of a spicy miso ramen bowl with soft boiled egg, nori and scallions, dark ceramic table, chopsticks resting on the rim, natural window light, editorial food photography` |
-| Architecture | Architecture | 16:9 | $0.03 | `Minimalist concrete villa on a cliff at dusk, warm interior light, infinity pool reflecting a violet sky, architectural photography, 24mm perspective, ultra sharp` |
-| Illustration | Illustration | 1:1 | $0.03 | `Layered paper cut illustration of a mountain lake at sunrise, five depth layers, soft pastel palette, subtle drop shadows, art print composition, clean vector edges` |
-| Fashion portrait | Fashion portrait | 3:4 | $0.03 | `Editorial fashion portrait of a model in an oversized ivory wool coat, seamless light grey studio backdrop, crisp high key lighting, medium format detail, calm expression` |
-| Macro nature | Macro nature | 3:2 | $0.03 | `Macro photograph of a dew covered dandelion seed head against deep black background, focus stacked detail, iridescent droplets, studio lighting` |
-| Design / UI | Design / UI | 16:9 | $0.03 | `Flat vector dashboard panel showing three gauge dials and abstract latency curves, muted blue and sand palette, generous white space, crisp geometric cards, no placeholder text` |
+| Product / e-commerce | Product / e-commerce | 1:1 | $0.0085 | `Studio hero shot of a frosted glass perfume bottle on a wet black stone slab, single softbox from the left, faint mist, deep charcoal background, crisp label text, commercial product photography` |
+| Food photography | Food photography | 4:3 | $0.0085 | `Overhead flat lay of a spicy miso ramen bowl with soft boiled egg, nori and scallions, dark ceramic table, chopsticks resting on the rim, natural window light, editorial food photography` |
+| Cinematic still | Cinematic still | 16:9 | $0.0085 | `Rain soaked Kyoto alley at night, paper lantern reflections on wet stone, a lone figure with a transparent umbrella walking away, cinematic 35mm still, shallow depth of field, film grain` |
+| Architecture | Architecture | 16:9 | $0.0085 | `Minimalist concrete villa on a cliff at dusk, warm interior light, infinity pool reflecting a violet sky, architectural photography, 24mm perspective, ultra sharp` |
+| Fashion portrait | Fashion portrait | 3:4 | $0.0085 | `Editorial fashion portrait of a model in an oversized ivory wool coat, seamless light grey studio backdrop, crisp high key lighting, medium format detail, calm expression` |
+| Illustration | Illustration | 1:1 | $0.0085 | `Layered paper cut illustration of a mountain lake at sunrise, five depth layers, soft pastel palette, subtle drop shadows, art print composition, clean vector edges` |
+| Design / UI | Design / UI | 16:9 | $0.0085 | `Flat vector dashboard panel showing three gauge dials and abstract latency curves, muted blue and sand palette, generous white space, crisp geometric cards, no placeholder text` |
+| Macro nature | Macro nature | 3:2 | $0.0085 | `Macro photograph of a dew covered dandelion seed head against deep black background, focus stacked detail, iridescent droplets, studio lighting` |
