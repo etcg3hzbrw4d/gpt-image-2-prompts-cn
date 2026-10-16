@@ -10,18 +10,20 @@
   <img src="assets/01-product-hero-perfume.jpg" width="820" alt="Sample render via the APIMart image API">
 </p>
 
-> **from $0.0085 per image** (1K $0.0085 · 2K $0.014 · 4K $0.021) — one OpenAI-compatible endpoint at `https://api.apimart.ai/v1`, no monthly plan required. *(observed 2026-10-12)*
+> **from $0.0085 per image** (1K $0.0085 · 2K $0.015 · 4K $0.022) — 一个 OpenAI 兼容端点 `https://api.apimart.ai/v1`，无需包月套餐。*(数据观测于 2026-10-12)*
 
-**[Get an API key](https://go.apimart.ai/k-2d215c)** · **[Live pricing](https://go.apimart.ai/k-045172)** · **[Model page](https://go.apimart.ai/k-cc24a8)** · [⚡ 60-second quickstart](#run-a-recipe-yourself)
+**[Get an API key](https://go.apimart.ai/k-2d215c)** · **[Live pricing](https://go.apimart.ai/k-045172)** · **[Model page](https://go.apimart.ai/k-cc24a8)** · [⚡ 60-second quickstart](#quickstart)
 
-**Why teams call GPT Image 2 (`gpt-image-2`) through APIMart**
+**为什么团队通过 APIMart 调用 GPT Image 2（`gpt-image-2`）**
 
-- **One key, entire catalog.** The same `https://api.apimart.ai/v1` base URL and `Authorization` header reach GPT Image 2 (`gpt-image-2`) and 300+ other image, video and language models — switch the `model` field, not your client.
-- **$1 minimum, pay as you go.** No subscription and no prepaid plan to size up front: top up from $1 and spend it on calls. There is no free quota to burn through first, so the price in this table is the price you pay.
-- **The charge comes back in the response.** Every call reports the amount billed (`cost` / `credits_cost`), so a spend number is read per call instead of guessed at month end.
-- **Async by design.** Submit, take the `task_id`, poll `GET /v1/tasks/{id}` — batching and retries are ordinary queue work, not a bespoke integration.
+- **一个 Key，整个目录。**同一个 `https://api.apimart.ai/v1` base URL 和 `Authorization` 请求头即可访问 GPT Image 2（`gpt-image-2`）以及图像、视频、语言等 300+ 模型——只需切换 `model` 字段，客户端无需改动。
+- **$1 起充，按量付费。**没有订阅、也没有需要预先估算用量的预付费套餐：最低充值 $1，调用多少扣多少。
+- **费用随响应一并返回。**每个完成的任务都会报告实际计费金额（`cost` / `credits_cost`）；状态为 `failed` 的任务会自动退款。
+- **原生异步设计。**提交任务、拿到 `task_id`、轮询 `GET /v1/tasks/{id}`——批处理和重试都是普通的队列工作，不需要定制集成。
 
 <!-- /conv-kit:v1 -->
+
+
 
 Eight **GPT Image 2 prompts** listed with an example render, the ratio, and what the call costs on this route. Copy a recipe, keep the structure, swap the subject.
 
@@ -93,11 +95,22 @@ Because ratio is a layout decision, not a style one: 1:1 for catalogue and icons
 
 **How much does one recipe cost to run?**
 
-**from $0.0085 per image** (1K $0.0085 · 2K $0.014 · 4K $0.021). Every completed task reports the exact amount in its `cost` field; a failed task is refunded.
+**from $0.0085 per image** (1K $0.0085 · 2K $0.015 · 4K $0.022). Every completed task reports the exact amount in its `cost` field; a failed task is refunded.
 
 **Can I use a recipe as a template for another subject?**
 
 That is the point. Keep the structure (subject + light + framing + setting + finish) and replace the subject; changing everything at once makes it impossible to tell which phrase moved the output.
+
+<!-- related-repos:auto -->
+## Related repositories
+
+- **Same model, this language** — the other half of this pair: [gpt-image-2-api-cn](https://github.com/etcg3hzbrw4d/gpt-image-2-api-cn)
+- **Same model, other languages** — 9 more language builds: Deutsch `gpt-image-2-api-de` · Español `gpt-image-2-api-es` · Français `gpt-image-2-api-fr` · Relay/gateway `gpt-image-2-api-gateway` · Bahasa `gpt-image-2-api-id` · 日本語 `gpt-image-2-api-ja` · 한국어 `gpt-image-2-api-ko` · Português `gpt-image-2-api-pt` · Русский `gpt-image-2-api-ru`
+- **More models in this language** — [midjourney-api-cn](https://github.com/apimartycl6k972t/midjourney-api-cn) · [gemini-2-5-flash-image-preview-api-cn](https://github.com/hm-5j/gemini-2-5-flash-image-preview-api-cn) · [nano-banana-api-cn](https://github.com/mpflv/nano-banana-api-cn) · [gemini-3-1-flash-image-preview-api-cn](https://github.com/utp00/gemini-3-1-flash-image-preview-api-cn) · [nano-banana-2-api-cn](https://github.com/i3hxnu6/nano-banana-2-api-cn) · [gemini-3-pro-image-preview-api-cn](https://github.com/vd0tv42d/gemini-3-pro-image-preview-api-cn)
+- **Topic hubs** — every build of this model, all languages: [gpt-image-2](https://github.com/topics/gpt-image-2) · [gpt-image-2-api](https://github.com/topics/gpt-image-2-api)
+
+This repository is one build in a cross-linked set of API guides for the same model family; each language build links back to the others.
+<!-- /related-repos:auto -->
 
 ## Attributed links (how this repository is measured)
 
